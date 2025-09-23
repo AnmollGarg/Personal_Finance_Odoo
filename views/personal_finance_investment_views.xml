@@ -26,29 +26,42 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="investment_id"/>
-                        <field name="investment_name" placeholder="Enter investment name"/>
-                        <field name="investment_type" widget="radio"/>
-                        <field name= "amount_invested" placeholder="Amount invested"/>
-                        <field name="current_value" placeholder="Current value"/>
-                        <field name="investment_date"/>
-                        <field name="maturity_date"/>
-                        <field name="is_reoccurring"/>
-                        <field name="is_one_time"/>
-                        <field name="is_monthly"/>
-                        <field name="interest_rate" placeholder="Interest rate (%)"/>
-                        <field name = "risk_level" widget="radio"/>
-                        <field name="notes" placeholder="Add notes or remarks"/>
-                        <field name="attachment" placeholder="Upload document"/>
-
+                        <group string="Basic Information">
+                            <field name="investment_id"/>
+                            <field name="investment_name" placeholder="Enter investment name"/>
+                            <field name="investment_type" widget="radio" options="{'horizontal': true}"/>
+                            <field name="risk_level" widget="radio"/>
+                        </group>
+                        <group string="Investment Details">
+                            <field name="amount_invested" placeholder="Amount invested"/>
+                            <field name="current_value" placeholder="Current value"/>
+                            <field name="interest_rate" placeholder="Interest rate (%)"/>
+                            <field name="investment_date"/>
+                            <field name="maturity_date"/>
+                        </group>
                     </group>
+                    <group>
+                        <group string="Investment Frequency">
+                            <field name="is_reoccurring"/>
+                            <field name="is_one_time"/>
+                            <field name="is_monthly"/>
+                        </group>
+                       </group>
 
+                        <notebook>
+                            <page string ="Additional Details">
+                                <group>
+                                    <field name="notes" placeholder="Add notes or remarks"/>
+                                    <field name="attachment" placeholder="Upload document"/>
+                                </group>
+                            </page>
+                        </notebook>
                 </sheet>
-                  <chatter>
+                <chatter>
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="activity_ids"/>
                     <field name="message_ids" widget="mail_thread"/>
-                </chatter >
+                </chatter>
             </form>
         </field>
     </record>

@@ -31,7 +31,7 @@
                         <field name="account_holder_name" placeholder="Account holder name"/>
                     </group>
                     <group>
-                        <field name="account_type" widget="radio"/>
+                        <field name="account_type" widget="radio" options="{'horizontal': true}"/>
                         <field name="balance" placeholder="Current balance"/>
                     </group>
                     <group>
