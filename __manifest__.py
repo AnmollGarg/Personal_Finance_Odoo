@@ -9,6 +9,7 @@
         'data/ir.sequence.xml',
         'views/personal_finance_views.xml',
         'views/personal_finance_bank_views.xml',
+        'views/personal_finance_investment_views.xml',
         'views/personal_finance_menus.xml',
         'security/ir.model.access.csv',
     ],

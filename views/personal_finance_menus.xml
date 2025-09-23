@@ -11,6 +11,12 @@
         <field name="view_mode">list,form</field>
     </record>
 
+    <record id="action_personal_finance_investment_list" model="ir.actions.act_window">
+        <field name="name">Investments</field>
+        <field name="res_model">personal.finance.investment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
     <!-- Top-level menu -->
     <menuitem id="menu_personal_finance_root" name="Personal Finance" sequence="10"/>
 
@@ -23,5 +29,10 @@
         parent="menu_personal_finance_root"
         action="personal_finance.action_personal_finance_bank_list"
         sequence="20"/>
+
+    <menuitem id="menu_personal_finance_investment" name="Investments"
+        parent="menu_personal_finance_root"
+        action="personal_finance.action_personal_finance_investment_list"
+        sequence="30"/>
 
 </odoo>

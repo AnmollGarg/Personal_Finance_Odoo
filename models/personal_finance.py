@@ -26,6 +26,10 @@ class PersonalFinance(models.Model):
         ('rent', 'Rent'),
         ('utilities', 'Utilities'),
         ('entertainment', 'Entertainment'),
+        ('health', 'Health'),
+        ('education', 'Education'),
+        ('shopping', 'Shopping'),
+        ('investment', 'Investment'),
         ('travel', 'Travel'),
         ('other', 'Other'),
     ], string='Category Expense', required=True, tracking=True)
@@ -36,9 +40,11 @@ class PersonalFinance(models.Model):
         ('cash', 'Cash'),
         ('credit_card', 'Credit Card'),
         ('upi', 'UPI'),
-    ])
+    ] , string='Transaction From', required=True, tracking=True)
 
-    bank_ids = fields.Many2one('personal.finance.bank', string='Bank', tracking=True)
+
+    bank_ids = fields.Many2one('personal.finance.bank', string='Bank', tracking=True, required = True)
+    investment_ids = fields.Many2one('personal.finance.investment', string='Investment', tracking=True, required = True)
 
     notes = fields.Text(string='Notes', tracking=True)
     attachment = fields.Binary(string='Attachment', tracking=True)
