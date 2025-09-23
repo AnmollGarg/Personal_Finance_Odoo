@@ -1,0 +1,48 @@
+<odoo>
+    <!-- List View -->
+    <record id="view_personal_finance_list" model="ir.ui.view">
+        <field name="name">personal.finance.list</field>
+        <field name="model">personal.finance</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="transaction_name"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="transaction_type"/>
+                <field name="bank_ids" invisible = "transaction_from == 'cash'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_personal_finance_form" model="ir.ui.view">
+        <field name="name">personal.finance.form</field>
+        <field name="model">personal.finance</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="transaction_name"/>
+                        <field name="amount" placeholder="Amount"/>
+                        <field name="date"/>
+                        <field name="transaction_type" widget="radio" options="{'horizontal': true}"/>
+                        <field name="transaction_from" widget="radio" options="{'horizontal': true}"/>
+                    </group>
+                    <group string="Category">
+                        <field name="category_income" widget="radio" options="{'horizontal': true}" placeholder="Income category" invisible = "transaction_type != 'income'"/>
+                        <field name="category_expense" widget="radio" options="{'horizontal': true}" placeholder="Expense category" invisible = "transaction_type != 'expense'"/>
+                    </group>
+                    <group>
+                        <field name="bank_ids" invisible = "transaction_from == 'cash'"/>
+                    </group>
+                    <group>
+                        <field name="notes" placeholder="Add notes or remarks"/>
+                        <field name="attachment" placeholder="Upload receipt or document"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

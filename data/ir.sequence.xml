@@ -1,0 +1,9 @@
+<odoo>
+    <record id="seq_personal_finance_transaction" model="ir.sequence">
+        <field name="name"> Personal Finance Sequence</field>
+        <field name="code">personal.finance</field>
+        <field name="prefix">TRANS</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

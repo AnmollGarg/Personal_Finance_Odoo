@@ -1,0 +1,46 @@
+<odoo>
+    <!-- List View -->
+    <record id="view_personal_finance_bank_list" model="ir.ui.view">
+        <field name="name">personal.finance.bank.list</field>
+        <field name="model">personal.finance.bank</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="bank_name"/>
+                <field name="account_number"/>
+                <field name="account_holder_name"/>
+                <field name="account_type"/>
+                <field name="balance"/>
+                <field name="ifsc_code"/>
+                <field name="bank_branch"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_personal_finance_bank_form" model="ir.ui.view">
+        <field name="name">personal.finance.bank.form</field>
+        <field name="model">personal.finance.bank</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="bank_name" placeholder="Enter bank name"/>
+                        <field name="account_number" placeholder="Account number"/>
+                        <field name="account_holder_name" placeholder="Account holder name"/>
+                    </group>
+                    <group>
+                        <field name="account_type" widget="radio"/>
+                        <field name="balance" placeholder="Current balance"/>
+                    </group>
+                    <group>
+                        <field name="ifsc_code" placeholder="IFSC code"/>
+                        <field name="bank_branch" placeholder="Branch name"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+</odoo>
