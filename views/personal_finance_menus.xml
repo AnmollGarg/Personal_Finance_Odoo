@@ -17,6 +17,18 @@
         <field name="view_mode">list,form</field>
     </record>
 
+    <record id="action_personal_finance_asset_list" model="ir.actions.act_window">
+        <field name="name">Assets</field>
+        <field name="res_model">personal.finance.asset</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="action_personal_finance_liability_list" model="ir.actions.act_window">
+        <field name="name">Liabilities</field>
+        <field name="res_model">personal.finance.liability</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
     <!-- Top-level menu -->
     <menuitem id="menu_personal_finance_root" name="Personal Finance" sequence="10"/>
 
@@ -34,5 +46,15 @@
         parent="menu_personal_finance_root"
         action="personal_finance.action_personal_finance_investment_list"
         sequence="30"/>
+
+    <menuitem id="menu_personal_finance_asset" name="Assets"
+        parent="menu_personal_finance_root"
+        action="personal_finance.action_personal_finance_asset_list"
+        sequence="40"/>
+
+    <menuitem id="menu_personal_finance_liability" name="Liabilities"
+        parent="menu_personal_finance_root"
+        action="personal_finance.action_personal_finance_liability_list"
+        sequence="50"/>
 
 </odoo>

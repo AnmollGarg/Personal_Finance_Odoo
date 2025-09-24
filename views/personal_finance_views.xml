@@ -24,6 +24,7 @@
             <form>
                 <sheet>
                     <group>
+                        <field name="transaction_id"/>
                         <field name="transaction_name"/>
                         <field name="amount" placeholder="Amount"/>
                         <field name="date"/>

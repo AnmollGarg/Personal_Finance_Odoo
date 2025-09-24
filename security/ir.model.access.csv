@@ -2,3 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_personal_finance_user,personal.finance.user,model_personal_finance,base.group_user,1,1,1,1
 access_personal_finance_bank_user,personal.finance.bank.ussr,model_personal_finance_bank,base.group_user,1,1,1,1
 access_personal_finance_investment_user,personal.finance.investment,model_personal_finance_investment,base.group_user,1,1,1,1
+access_personal_finance_asset_user,personal.finance.asset,model_personal_finance_asset,base.group_user,1,1,1,1
+access_personal_finance_liability_user,personal.finance.liability,model_personal_finance_liability,base.group_user,1,1,1,1

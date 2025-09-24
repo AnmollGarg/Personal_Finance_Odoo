@@ -1,0 +1,38 @@
+<odoo>
+    <!-- List View -->
+    <record id="view_personal_finance_liability_list" model="ir.ui.view">
+        <field name="name">personal.finance.liability.list</field>
+        <field name="model">personal.finance.liability</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                        <field name="liability_id"/>
+                        <field name="liability_name"/>
+                        <field name="liability_ids"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_personal_finance_liability_form" model="ir.ui.view">
+        <field name="name">personal.finance.liability.form</field>
+        <field name="model">personal.finance.liability</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                   <group>
+                        <field name="liability_id"/>
+                        <field name="liability_name"/>
+                        <field name="liability_ids"/>
+                    </group>
+                </sheet>
+                  <chatter>
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </chatter>
+            </form>
+        </field>
+    </record>
+</odoo>

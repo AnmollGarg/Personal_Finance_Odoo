@@ -1,0 +1,38 @@
+<odoo>
+    <!-- List View -->
+    <record id="view_personal_finance_asset_list" model="ir.ui.view">
+        <field name="name">personal.finance.asset.list</field>
+        <field name="model">personal.finance.asset</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="asset_id"/>
+                <field name="asset_name"/>
+                <field name="asset_ids"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_personal_finance_asset_form" model="ir.ui.view">
+        <field name="name">personal.finance.asset.form</field>
+        <field name="model">personal.finance.asset</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="asset_id"/>
+                        <field name="asset_name"/>
+                        <field name="asset_ids"/>
+                    </group>
+                </sheet>
+                  <chatter>
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </chatter >
+            </form>
+        </field>
+    </record>
+</odoo>

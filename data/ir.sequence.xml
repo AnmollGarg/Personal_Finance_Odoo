@@ -14,4 +14,20 @@
         <field name="padding">4</field>
         <field name="number_increment">1</field>
     </record>
+    
+    <record id="seq_personal_finance_asset" model="ir.sequence">
+        <field name="name"> Personal Finance Asset Sequence</field>
+        <field name="code">personal.finance.asset</field>
+        <field name="prefix">ASSET</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
+    
+    <record id="seq_personal_finance_liability" model="ir.sequence">
+        <field name="name"> Personal Finance Liability Sequence</field>
+        <field name="code">personal.finance.liability</field>
+        <field name="prefix">LIAB</field>
+        <field name="padding">4</field>
+        <field name="number_increment">1</field>
+    </record>
 </odoo>

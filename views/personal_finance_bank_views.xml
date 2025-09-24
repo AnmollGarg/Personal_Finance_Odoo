@@ -26,17 +26,17 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="bank_name" placeholder="Enter bank name"/>
-                        <field name="account_number" placeholder="Account number"/>
-                        <field name="account_holder_name" placeholder="Account holder name"/>
+                        <field name="bank_name" placeholder="Bank of Baroda"/>
+                        <field name="account_number" placeholder="XXXX XXXX XXXX XXXX"/>
+                        <field name="account_holder_name" placeholder="Harry"/>
                     </group>
                     <group>
                         <field name="account_type" widget="radio" options="{'horizontal': true}"/>
-                        <field name="balance" placeholder="Current balance"/>
+                        <field name="balance" placeholder="00.00"/>
                     </group>
                     <group>
                         <field name="ifsc_code" placeholder="IFSC code"/>
-                        <field name="bank_branch" placeholder="Branch name"/>
+                        <field name="bank_branch" placeholder="Harries Park"/>
                     </group>
                 </sheet>
                   <chatter>
