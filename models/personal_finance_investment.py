@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class PersonalFinanceInvestment(models.Model):
     _name = 'personal.finance.investment'
@@ -31,11 +32,24 @@ class PersonalFinanceInvestment(models.Model):
         ('medium', 'Medium'),
         ('high', 'High'),
     ],tracking=True, required=True)
+    transaction_ids = fields.Many2one('personal.finance', string='Transaction', tracking=True, help ='Link to the related transaction', required = True)
     notes = fields.Text(tracking=True)
     attachment = fields.Binary(tracking=True)
 
     @api.model
     def create(self, vals):
-            if vals.get('investment_id', 'New') == 'New':
-                vals['investment_id'] = self.env['ir.sequence'].next_by_code('personal.finance.investment') or 'New'
-            return super(PersonalFinanceInvestment, self).create(vals)
+        if vals.get('investment_id', 'New') == 'New':
+            vals['investment_id'] = self.env['ir.sequence'].next_by_code('personal.finance.investment') or 'New'
+        return super(PersonalFinanceInvestment, self).create(vals)
+
+    @api.constrains('transaction_ids')
+    def _check_transaction_unique(self):
+        for record in self:
+            if record.transaction_ids:
+                debt = self.env['personal.finance.debt'].search([
+                    ('transaction_ids', '=', record.transaction_ids.id)
+                ], limit=1)
+                if debt:
+                    raise ValidationError(
+                        "This transaction is already linked to a debt. You cannot link the same transaction to both investment and debt."
+                    )

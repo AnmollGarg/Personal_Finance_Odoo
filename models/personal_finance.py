@@ -51,6 +51,9 @@ class PersonalFinance(models.Model):
     notes = fields.Text(tracking=True)
     attachment = fields.Binary(tracking=True)
 
+    debit = fields.Float(compute='_compute_debit_credit', store=False, string='Debit')
+    credit = fields.Float(compute='_compute_debit_credit', store=False, string='Credit')
+
     @api.model
     def create(self, vals):
         if vals.get('transaction_id', 'New') == 'New':
@@ -74,4 +77,12 @@ class PersonalFinance(models.Model):
                 raise ValidationError(
                     "Transaction amount cannot be greater than the available bank balance (%s)." % record.bank_ids.balance)
 
-
+    @api.depends('transaction_type', 'amount')
+    def _compute_debit_credit(self):
+        for record in self:
+            if record.transaction_type == 'expense':
+                record.debit = record.amount
+                record.credit = 0.0
+            else:
+                record.debit = 0.0
+                record.credit = record.amount

@@ -4,3 +4,4 @@ access_personal_finance_bank_user,personal.finance.bank.ussr,model_personal_fina
 access_personal_finance_investment_user,personal.finance.investment,model_personal_finance_investment,base.group_user,1,1,1,1
 access_personal_finance_asset_user,personal.finance.asset,model_personal_finance_asset,base.group_user,1,1,1,1
 access_personal_finance_liability_user,personal.finance.liability,model_personal_finance_liability,base.group_user,1,1,1,1
+access_personal_finance_debt_user,personal.finance.debt,model_personal_finance_debt,base.group_user,1,1,1,1

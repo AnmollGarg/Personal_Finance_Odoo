@@ -5,12 +5,13 @@
         <field name="model">personal.finance</field>
         <field name="type">list</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="transaction_name"/>
-                <field name="amount"/>
+            <list string ="Passbook" default_order="transaction_id desc">
+                <field name="transaction_id"/>
                 <field name="date"/>
-                <field name="transaction_type"/>
-                <field name="bank_ids" invisible = "transaction_from == 'cash'"/>
+                <field name="transaction_name"/>
+                <field name="debit"/>
+                <field name="credit"/>
+                <field name="bank_ids"/>
             </list>
         </field>
     </record>
@@ -55,6 +56,20 @@
                     <field name="message_ids" widget="mail_thread"/>
                 </chatter >
             </form>
+        </field>
+    </record>
+
+    <record id="view_personal_finance_search" model="ir.ui.view">
+        <field name="name">personal.finance.search</field>
+        <field name="model">personal.finance</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="transaction_name"/>
+                <field name="date"/>
+                <field name="bank_ids"/>
+                <filter string="Group by Bank" name="group_by_bank" context="{'group_by':'bank_ids'}"/>
+            </search>
         </field>
     </record>
 </odoo>

@@ -8,6 +8,7 @@
     'data': [
         'views/personal_finance_menus.xml',
         'data/ir.sequence.xml',
+        'views/personal_finance_debt_views.xml',
         'views/personal_finance_asset_views.xml',
         'views/personal_finance_liability_views.xml',
         'views/personal_finance_views.xml',

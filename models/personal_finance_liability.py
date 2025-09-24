@@ -8,7 +8,7 @@ class PersonalFinanceLiability(models.Model):
 
     liability_id = fields.Char(required=True, tracking=True, default = 'New', readonly=True, help ='Unique Liability ID')
     liability_name = fields.Char(required=True, tracking=True)
-    liability_ids = fields.Many2one('personal.finance', tracking=True)
+    liability_ids = fields.Many2one('personal.finance.debt', tracking=True)
 
     @api.model
     def create(self, vals):

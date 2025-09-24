@@ -33,6 +33,7 @@
                             <field name="risk_level" widget="radio"/>
                         </group>
                         <group string="Investment Details">
+                            <field name="transaction_ids" placeholder="Transaction ID"/>
                             <field name="amount_invested" placeholder="Amount invested"/>
                             <field name="current_value" placeholder="Current value"/>
                             <field name="interest_rate" placeholder="Interest rate (%)"/>
