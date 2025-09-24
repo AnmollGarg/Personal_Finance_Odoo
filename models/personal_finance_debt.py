@@ -34,11 +34,12 @@ class PersonalFinanceDebt(models.Model):
     notes = fields.Text(tracking=True)
     attachment = fields.Binary(tracking=True)
 
-    @api.model
-    def create(self, vals):
-        if vals.get('debt_id', 'New') == 'New':
-            vals['debt_id'] = self.env['ir.sequence'].next_by_code('personal.finance.debt') or 'New'
-        return super(PersonalFinanceDebt, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('debt_id', 'New') == 'New':
+                vals['debt_id'] = self.env['ir.sequence'].next_by_code('personal.finance.debt') or 'New'
+        return super(PersonalFinanceDebt, self).create(vals_list)
 
     @api.constrains('transaction_ids')
     def _check_transaction_unique(self):

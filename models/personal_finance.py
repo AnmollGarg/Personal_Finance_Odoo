@@ -51,31 +51,33 @@ class PersonalFinance(models.Model):
     notes = fields.Text(tracking=True)
     attachment = fields.Binary(tracking=True)
 
-    debit = fields.Float(compute='_compute_debit_credit', store=False, string='Debit')
-    credit = fields.Float(compute='_compute_debit_credit', store=False, string='Credit')
+    debit = fields.Float(compute='_compute_debit_credit',string='Debit')
+    credit = fields.Float(compute='_compute_debit_credit',string='Credit')
 
-    @api.model
-    def create(self, vals):
-        if vals.get('transaction_id', 'New') == 'New':
-            vals['transaction_id'] = self.env['ir.sequence'].next_by_code('personal.finance') or 'New'
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('transaction_id', 'New') == 'New':
+                vals['transaction_id'] = self.env['ir.sequence'].next_by_code('personal.finance') or 'New'
 
-        bank_id = vals.get('bank_ids')
-        amount = vals.get('amount', 0)
-        transaction_type = vals.get('transaction_type')
-        if bank_id and amount:
-            bank = self.env['personal.finance.bank'].browse(bank_id)
-            if transaction_type == 'income':
-                bank.balance += amount
-            elif transaction_type == 'expense':
-                bank.balance -= amount
-        return super(PersonalFinance, self).create(vals)
+            bank_id = vals.get('bank_ids')
+            amount = vals.get('amount', 0)
+            transaction_type = vals.get('transaction_type')
+            if bank_id and amount:
+                bank = self.env['personal.finance.bank'].browse(bank_id)
+                if transaction_type == 'income':
+                    bank.balance += amount
+                elif transaction_type == 'expense':
+                    bank.balance -= amount
+        return super(PersonalFinance, self).create(vals_list)
 
     @api.constrains('amount', 'bank_ids')
     def _check_amount_vs_bank_balance(self):
         for record in self:
             if record.bank_ids and record.amount > record.bank_ids.balance:
                 raise ValidationError(
-                    "Transaction amount cannot be greater than the available bank balance (%s)." % record.bank_ids.balance)
+                    f"Transaction amount cannot be greater than the available bank balance ({record.bank_ids.balance})."
+                )
 
     @api.depends('transaction_type', 'amount')
     def _compute_debit_credit(self):

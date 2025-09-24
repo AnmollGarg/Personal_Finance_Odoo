@@ -16,11 +16,3 @@ class PersonalFinanceBank(models.Model):
         ('current', 'Current'),
     ],required=True, tracking=True)
     balance = fields.Float(tracking=True, required=True)
-    account_opening_date = fields.Date(tracking=True)
-    account_status = fields.Selection([
-        ('active', 'Active'),
-        ('inactive', 'Inactive'),
-        ('closed', 'Closed'),
-    ],default='active', tracking=True, required=True,)
-    bank_address = fields.Text(tracking=True, required=True,)
-    swift_code = fields.Char(tracking=True, required=True,)

@@ -5,7 +5,7 @@
         <field name="model">personal.finance</field>
         <field name="type">list</field>
         <field name="arch" type="xml">
-            <list string ="Passbook" default_order="transaction_id desc">
+            <list default_order="transaction_id desc">
                 <field name="transaction_id"/>
                 <field name="date"/>
                 <field name="transaction_name"/>

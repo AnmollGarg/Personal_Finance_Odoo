@@ -10,8 +10,9 @@ class PersonalFinanceLiability(models.Model):
     liability_name = fields.Char(required=True, tracking=True)
     liability_ids = fields.Many2one('personal.finance.debt', tracking=True)
 
-    @api.model
-    def create(self, vals):
-        if vals.get('liability_id', 'New') == 'New':
-            vals['liability_id'] = self.env['ir.sequence'].next_by_code('personal.finance.liability') or 'New'
-        return super(PersonalFinanceLiability, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('liability_id', 'New') == 'New':
+                vals['liability_id'] = self.env['ir.sequence'].next_by_code('personal.finance.liability') or 'New'
+        return super().create(vals_list)

@@ -10,8 +10,9 @@ class PersonalFinanceAsset(models.Model):
     asset_name = fields.Char(required=True, tracking=True)
     asset_ids = fields.Many2one('personal.finance.investment', string='Investment', tracking=True, help ='Link to the related investment')
 
-    @api.model
-    def create(self, vals):
-        if vals.get('asset_id', 'New') == 'New':
-            vals['asset_id'] = self.env['ir.sequence'].next_by_code('personal.finance.asset') or 'New'
-        return super(PersonalFinanceAsset, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('asset_id', 'New') == 'New':
+                vals['asset_id'] = self.env['ir.sequence'].next_by_code('personal.finance.asset') or 'New'
+        return super(PersonalFinanceAsset, self).create(vals_list)
